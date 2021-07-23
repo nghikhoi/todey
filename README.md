@@ -1,4 +1,0 @@
-
-
-
-MATERIAL X
