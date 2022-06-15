@@ -8,6 +8,8 @@ import 'package:todey/controllers/settings_controller.dart';
 import 'package:todey/modules/setting/widget/setting_title.dart';
 import 'package:todey/utils/constant.dart';
 
+import '../../constants/controllers.dart';
+
 class Setting extends StatefulWidget {
   const Setting({Key key}) : super(key: key);
 
@@ -99,11 +101,11 @@ class _SettingState extends State<Setting> {
               ),
               //
               SettingTile(
-                icon: Entypo.twitter,
-                btnText: "follow twitt".tr,
+                icon: Entypo.logout,
+                btnText: "Logout",
                 trailing: Text(""),
                 onPressed: () {
-                  _con.launchTwitter();
+                  authController.logout(context);
                 },
               ),
               SizedBox(height: 20.h)
