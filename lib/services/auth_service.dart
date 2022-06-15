@@ -39,9 +39,22 @@ class AuthService extends GetxController {
 
   // google signing
   void login(context) async {
-    final GoogleSignIn _googleSign = GoogleSignIn();
+    final GoogleSignIn _googleSign = GoogleSignIn(clientId: "40220344734-2bbmn8mabvadg9nkqmhvdo1koccncamg.apps.googleusercontent.com");
 
-    final GoogleSignInAccount _googleSignAccount = await _googleSign.signIn();
+    GoogleSignInAccount _googleSignAccount;
+    try {
+      _googleSignAccount = await _googleSign.signInSilently();
+
+      if (_googleSignAccount == null) {
+            _googleSignAccount = await _googleSign.signIn();
+      }
+
+      if (_googleSignAccount == null) {
+        return;
+      }
+    } catch (e) {
+      print(e);
+    }
 
     final GoogleSignInAuthentication _googleAuth =
         await _googleSignAccount.authentication;

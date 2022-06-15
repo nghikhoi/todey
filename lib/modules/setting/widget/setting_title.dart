@@ -22,9 +22,11 @@ class SettingTile extends StatelessWidget {
           width: 325.w,
           child: Row(
             children: [
-              Icon(
-                icon,
-                color: Colors.grey,
+              Flexible(
+                child: Icon(
+                  icon,
+                  color: Colors.grey,
+                ),
               ),
               SizedBox(width: 20.w),
               Text(

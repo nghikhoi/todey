@@ -7,9 +7,9 @@ import 'package:todey/utils/exports.dart';
 import 'package:path_provider/path_provider.dart' as path;
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final dir = await path.getApplicationDocumentsDirectory();
   Hive.init(dir.path);
-  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await DatabaseHelper().initializeDB();
   Hive.registerAdapter(UserDataAdapter());
@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
     ));
     return ScreenUtilInit(
       designSize: Size(360, 784),
-      builder: () {
+      builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           translations: Translation(),
